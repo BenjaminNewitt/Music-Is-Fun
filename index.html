@@ -15,36 +15,37 @@
   <body class="container-fluid">
     <header class="row">
       <div class="col-12 bannerStyle">
-        <p>Music is Fun</p>
-      </div>
-      <div class="offset-8 col-4">
-        <form onsubmit="app.songsController.search(event)">
-          <input
-            type="text"
-            class="form-control"
-            name="query"
-            placeholder="Search For Music"
-          />
-          <button class="btn btn-success mt-1 form-control" type="submit">
-            Search
-          </button>
-        </form>
+        <h1>rTunes</h1>
       </div>
     </header>
 
     <main class="row">
-      <div class="col-6">
-        <h3 class="text-center">Search Results</h3>
-        <div id="songs" class="col-12 m-0">
-          <!-- template to generate -->
+      <!-- song search and results -->
+      <div class="col-3">
+        <div class="row bg-dark">
+          <div class="col-12">
+            <form onsubmit="app.songsController.search(event)">
+              <input
+                type="text"
+                class="form-control"
+                name="query"
+                placeholder="Search For Music"
+              />
+              <button class="btn btn-success mt-1 form-control" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+          <div class="col-12 mt-3">
+            <!-- results go here -->
+            <div class="row" id="songs"></div>
+          </div>
         </div>
       </div>
-      <div class="col-6">
-        <h3 class="text-center">Playlist</h3>
-        <div class="col-12 m-0" id="playlist">
-          <!-- template for playlist -->
-        </div>
-      </div>
+      <!-- preview selected song -->
+      <div class="col-8 text-center" id="preview"></div>
+      <!-- playlist -->
+      <div class="col-4"></div>
     </main>
 
     <script
@@ -58,5 +59,9 @@
       crossorigin="anonymous"
     ></script>
     <script src="app/main.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/af9f577207.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

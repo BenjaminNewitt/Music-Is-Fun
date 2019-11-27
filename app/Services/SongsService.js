@@ -4,7 +4,8 @@ import store from "../store.js";
 // @ts-ignore
 let _sandBox = axios.create({
   //TODO Change YOURNAME to your actual name
-  baseURL: "//bcw-sandbox.herokuapp.com/api/YOURNAME/songs"
+  baseURL: "//bcw-sandbox.herokuapp.com/api/BenjaminNewitt/songs",
+  timeout: 3000
 });
 
 class SongsService {
@@ -30,7 +31,11 @@ class SongsService {
         throw new Error(err);
       });
   }
-
+  // NOTE get preview info and commit it to preview object
+  previewSong(id) {
+    let preview = store.State.songs.find(song => song._id == id);
+    store.commit("preview", preview);
+  }
   /**
    * Retrieves the saved list of songs from the sandbox
    */
@@ -38,8 +43,10 @@ class SongsService {
     _sandBox
       .get()
       .then(res => {
+        console.log(res);
         //TODO What are you going to do with this result
-        let results = res.results.map(rawData => new Song(rawData));
+        let songs = res.data.data.map(s => new Song(s));
+        store.commit("songs", songs);
       })
       .catch(error => {
         throw new Error(error);
