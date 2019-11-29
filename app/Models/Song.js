@@ -32,7 +32,14 @@ export default class Song {
   get previewTemplate() {
     return `<p class="text-left">now playing</p>
     <img src="${this.albumArt}" alt="${this.album}" />
-    <h1>'${this.artist}' - '${this.title}'</h1>
+    <button
+      type="button"
+      class="btn btn-primary btn-sm float-right align-self-right"
+      onclick="app.songsController.addSong('${this._id}')"
+    >
+      +
+    </button>
+    <h2>'${this.artist}' - '${this.title}'</h2>
     <p>album: '${this.album}' | '${this.price}'</p>
     <audio controls preload="none">
           <source src="${this.preview}"</audio>
@@ -41,7 +48,17 @@ export default class Song {
 
   get playlistTemplate() {
     return `
-
+    <div class="col-10 mx-auto mb-3 bg-white">
+    <button
+      type="button"
+      class="btn btn-danger btn-sm rounded-circle float-right align-self-right"
+      onclick="app.songsController.removeSong('${this._id}')"
+    >
+      X
+    </button>
+    <p class="m-0">'${this.artist}'</p>
+    <p class="m-0">'${this.title}'</p>
+  </div>
         `;
   }
 }
