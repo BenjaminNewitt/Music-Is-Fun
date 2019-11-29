@@ -18,7 +18,12 @@ function _drawPreview() {
   document.querySelector("#preview").innerHTML = template;
 }
 /**Draws the Users saved songs to the page */
-function _drawPlaylist() {}
+function _drawPlaylist() {
+  let template = "";
+  let playlist = store.State.playlist;
+  playlist.forEach(playlist => (template += playlist.playlistTemplate));
+  document.querySelector("#playlist").innerHTML = template;
+}
 
 //Public
 export default class SongsController {
@@ -26,7 +31,9 @@ export default class SongsController {
     //TODO Don't forget to register your subscribers
     store.subscribe("songs", _drawResults);
     store.subscribe("preview", _drawPreview);
+    store.subscribe("playlist", _drawPlaylist);
     _drawResults();
+    _drawPlaylist();
   }
 
   /**Takes in the form submission event and sends the query to the service */
@@ -50,11 +57,16 @@ export default class SongsController {
    * Takes in a song id and sends it to the service in order to add it to the users playlist
    * @param {string} id
    */
-  addSong(id) {}
+  addSong(id) {
+    SongService.addSong(id);
+    _drawPlaylist();
+  }
 
   /**
    * Takes in a song id to be removed from the users playlist and sends it to the server
    * @param {string} id
    */
-  removeSong(id) {}
+  removeSong(id) {
+    SongService.removeSong(id);
+  }
 }

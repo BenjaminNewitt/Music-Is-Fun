@@ -12,6 +12,8 @@ class SongsService {
   constructor() {
     // NOTE this will get your songs on page load
     this.getMySongs();
+    // NOTE this will get your playlist on page load
+    this.getPlaylist();
   }
 
   /**
@@ -53,6 +55,19 @@ class SongsService {
       });
   }
 
+  getPlaylist() {
+    _sandBox
+      .get()
+      .then(res => {
+        // TODO check where to find playlist data
+        let playlist = res.data.data.map(p => new Song(p));
+        store.commit("playlist", playlist);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   /**
    * Takes in a song id and sends it from the search results to the sandbox to be saved.
    * Afterwords it will update the store to reflect saved info
@@ -60,7 +75,16 @@ class SongsService {
    */
   addSong(id) {
     //TODO you only have an id, you will need to find it in the store before you can post it
+    let song = store.State.songs.find(song => song._id == id);
     //TODO After posting it what should you do?
+    _sandBox
+      .post("", song)
+      .then(res => {
+        this.getPlaylist();
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   /**
@@ -70,6 +94,15 @@ class SongsService {
    */
   removeSong(id) {
     //TODO Send the id to be deleted from the server then update the store
+    _sandBox
+      .delete(`${id}`)
+      .then(res => {
+        console.log(res);
+        this.getPlaylist();
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 }
 
