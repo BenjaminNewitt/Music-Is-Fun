@@ -68,5 +68,6 @@ export default class SongsController {
    */
   removeSong(id) {
     SongService.removeSong(id);
+    _drawPlaylist();
   }
 }

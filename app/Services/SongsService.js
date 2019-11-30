@@ -12,8 +12,6 @@ class SongsService {
   constructor() {
     // NOTE this will get your songs on page load
     this.getMySongs();
-    // NOTE this will get your playlist on page load
-    this.getPlaylist();
   }
 
   /**
@@ -45,26 +43,12 @@ class SongsService {
     _sandBox
       .get()
       .then(res => {
-        console.log(res);
         //TODO What are you going to do with this result
         let songs = res.data.data.map(s => new Song(s));
-        store.commit("songs", songs);
+        store.commit("playlist", songs);
       })
       .catch(error => {
         throw new Error(error);
-      });
-  }
-
-  getPlaylist() {
-    _sandBox
-      .get()
-      .then(res => {
-        // TODO check where to find playlist data
-        let playlist = res.data.data.map(p => new Song(p));
-        store.commit("playlist", playlist);
-      })
-      .catch(err => {
-        console.error(err);
       });
   }
 
@@ -75,12 +59,12 @@ class SongsService {
    */
   addSong(id) {
     //TODO you only have an id, you will need to find it in the store before you can post it
-    let song = store.State.songs.find(song => song._id == id);
+    let playlistSong = store.State.songs.find(song => song._id == id);
     //TODO After posting it what should you do?
     _sandBox
-      .post("", song)
+      .post("", playlistSong)
       .then(res => {
-        this.getPlaylist();
+        this.getMySongs();
       })
       .catch(err => {
         console.error(err);
@@ -98,7 +82,7 @@ class SongsService {
       .delete(`${id}`)
       .then(res => {
         console.log(res);
-        this.getPlaylist();
+        this.getMySongs();
       })
       .catch(err => {
         console.error(err);
