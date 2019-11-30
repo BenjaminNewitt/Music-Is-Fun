@@ -2,7 +2,7 @@ export default class Song {
   constructor(data) {
     this.title = data.trackName || data.title;
     this.albumArt =
-      data.albumArt || data.artworkUrl100.replace(/100x100/g, "300x300");
+      data.albumArt || data.artworkUrl100.replace(/100x100/g, "200x200");
     this.artist = data.artistName || data.artist;
     this.album = data.collectionName || data.album;
     this.price = data.trackPrice || data.price;
@@ -12,7 +12,7 @@ export default class Song {
 
   get Template() {
     return `
-    <div class="col-10 m-auto bg-light text-center">
+    <div class="col-10 mt-2 ml-auto mr-auto mb-auto bg-light text-center shadow">
     <img
       src="${this.albumArt}"
       alt="${this.album}"
@@ -22,8 +22,8 @@ export default class Song {
       <i class="fas fa-play"></i>
     </button>
     <div>
-      <p class="m-0">'${this.artist}' -</p>
-      <p class="m-0">'${this.title}'</p>
+      <p class="m-0">${this.artist} -</p>
+      <p class="m-0">${this.title}</p>
     </div>
   </div>
         `;
@@ -31,16 +31,16 @@ export default class Song {
 
   get previewTemplate() {
     return `<p class="text-left">now playing</p>
-    <img src="${this.albumArt}" alt="${this.album}" />
+    <img src="${this.albumArt}" alt="${this.album}" class="shadow"/>
     <button
       type="button"
-      class="btn btn-primary btn-sm float-right align-self-right"
+      class="btn btn-primary btn-sm float-right align-self-right shadow"
       onclick="app.songsController.addSong('${this._id}')"
     >
       +
     </button>
-    <h2>'${this.artist}' - '${this.title}'</h2>
-    <p>album: '${this.album}' | '${this.price}'</p>
+    <h2>${this.artist} - ${this.title}</h2>
+    <p>album: ${this.album} | $${this.price}</p>
     <audio controls preload="none">
           <source src="${this.preview}"</audio>
   `;
@@ -48,7 +48,7 @@ export default class Song {
 
   get playlistTemplate() {
     return `
-    <div class="col-10 mx-auto mb-3 bg-white">
+    <div class="col-10 mt-1 ml-auto mr-auto mb-3 bg-white shadow">
     <button
       type="button"
       class="btn btn-danger btn-sm rounded-circle float-right align-self-right"
@@ -56,8 +56,8 @@ export default class Song {
     >
       X
     </button>
-    <p class="m-0">'${this.artist}'</p>
-    <p class="m-0">'${this.title}'</p>
+    <p class="m-0">${this.artist}</p>
+    <p class="m-0">${this.title}</p>
   </div>
         `;
   }
