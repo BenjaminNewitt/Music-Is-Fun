@@ -1,9 +1,29 @@
 /* NOTE @media queries for mobile*/
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 767px) {
   /* TODO change columns for results, preview, and playlist */
-  /* TODO change order for results, preview, and playlist */
   /* TODO change color of results and preview*/
+  main {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  header {
+    max-height: 6vh;
+  }
+
+  #results-column {
+    order: 1;
+    max-width: 100%;
+  }
+  #playlist-column {
+    order: 2;
+    max-width: 100%;
+  }
+  #preview {
+    order: 3;
+    max-width: 100%;
+  }
 }
 
 body {
