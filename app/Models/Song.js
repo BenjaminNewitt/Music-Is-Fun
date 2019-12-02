@@ -33,7 +33,7 @@ export default class Song {
 
   get previewTemplate() {
     return `<p class="text-left">now playing</p>
-    <img src="${this.albumArt}" alt="${this.album}" class="shadow"/>
+    <img src="${this.albumArt}" alt="${this.album}" class="shadow preview-img"/>
     <button
       type="button"
       class="btn btn-primary btn-sm float-right align-self-right shadow"
@@ -41,7 +41,7 @@ export default class Song {
     >
       +
     </button>
-    <h2>${this.artist} - ${this.title}</h2>
+    <h2 class="preview-info">${this.artist} - ${this.title}</h2>
     <p>album: ${this.album} | $${this.price}</p>
     <audio controls preload="none">
           <source src="${this.preview}"</audio>

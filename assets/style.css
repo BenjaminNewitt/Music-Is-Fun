@@ -93,6 +93,7 @@ main {
   #preview {
     order: 3;
     max-width: 100%;
+    max-height: 20vh;
   }
 
   #songs {
@@ -102,7 +103,16 @@ main {
   }
 
   #my-music {
-    height: 20vh;
+    max-height: 15vh;
     width: auto;
+  }
+
+  .preview-img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .preview-info {
+    font-size: small;
   }
 }
