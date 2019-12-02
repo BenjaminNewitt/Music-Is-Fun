@@ -13,14 +13,16 @@ export default class Song {
   get Template() {
     return `
     <div class="col-10 mt-2 ml-auto mr-auto mb-auto bg-light text-center shadow">
+    <div class="results-container">
     <img
       src="${this.albumArt}"
       alt="${this.album}"
       class="results-image"
     />
     <button class="btn" onclick="app.songsController.previewSong('${this._id}')">
-      <i class="fas fa-play"></i>
+      <i class="fas fa-play text-info"></i>
     </button>
+    </div>
     <div>
       <p class="m-0">${this.artist} -</p>
       <p class="m-0">${this.title}</p>

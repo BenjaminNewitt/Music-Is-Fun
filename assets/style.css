@@ -1,6 +1,35 @@
+/* NOTE @media queries for mobile*/
+
+@media only screen and (max-width: 600px) {
+  /* TODO change columns for results, preview, and playlist */
+  /* TODO change order for results, preview, and playlist */
+  /* TODO change color of results and preview*/
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.results-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.results-container button {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+}
+
 .results-image {
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
 }
 
 header {
