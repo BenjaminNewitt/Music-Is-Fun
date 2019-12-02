@@ -94,4 +94,15 @@ main {
     order: 3;
     max-width: 100%;
   }
+
+  #songs {
+    overflow: auto;
+    max-height: 30vh;
+    width: auto;
+  }
+
+  #my-music {
+    height: 20vh;
+    width: auto;
+  }
 }

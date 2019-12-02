@@ -12,7 +12,7 @@ export default class Song {
 
   get Template() {
     return `
-    <div class="col-10 mt-2 ml-auto mr-auto mb-auto bg-light text-center shadow">
+    <div class="col-10 mt-2 ml-auto mr-auto mb-auto bg-light text-center shadow results-template">
     <div class="results-container">
     <img
       src="${this.albumArt}"
