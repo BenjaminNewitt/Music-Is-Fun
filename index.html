@@ -22,7 +22,7 @@
 
     <main class="row overflow-hidden">
       <!-- song search and results -->
-      <div class="col-12 col-sm-3" id="results-column">
+      <div class="col-12 col-sm-3 bg-dark" id="results-column">
         <div class="row bg-dark" id="results">
           <div class="col-12 align-self-center">
             <form onsubmit="app.songsController.search(event)">
@@ -46,12 +46,12 @@
       </div>
       <!-- preview selected song -->
       <div class="col-12 col-sm-6 text-center" id="preview"></div>
-      <div class="col-12 col-sm-3" id="playlist-column">
-          <!-- playlist -->
-        <div class="row bg-primary" id="my-music">
+      <!-- playlist -->
+      <div class="col-12 col-sm-3 bg-primary" id="playlist-column">
+        <div class="row" id="my-music">
           <div class="col-12 align-self-center">
             <h2 class="text-center m-0 text-white">My Music</h2>
-            <div class="row bg-primary" id="playlist">
+            <div class="row" id="playlist">
           </div>
         </div>
       </div>
