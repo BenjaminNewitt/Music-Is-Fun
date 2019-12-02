@@ -81,7 +81,6 @@ class SongsService {
     _sandBox
       .delete(`${id}`)
       .then(res => {
-        console.log(res);
         this.getMySongs();
       })
       .catch(err => {

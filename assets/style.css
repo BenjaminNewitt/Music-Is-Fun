@@ -65,7 +65,7 @@ main {
 
 #playlist {
   overflow: auto;
-  max-height: 70vh;
+  max-height: 78vh;
   width: auto;
 }
 
@@ -75,7 +75,7 @@ main {
   /* TODO change color of results and preview*/
   main {
     flex-direction: row;
-    height: 100vh;
+    max-height: 100vh;
   }
 
   header {
@@ -103,6 +103,12 @@ main {
   }
 
   #my-music {
+    max-height: 15vh;
+    width: auto;
+  }
+
+  #playlist {
+    overflow: auto;
     max-height: 15vh;
     width: auto;
   }
